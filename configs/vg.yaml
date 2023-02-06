@@ -1,0 +1,71 @@
+model:
+  base_learning_rate: 4.5e-06
+  target: TwFA.models.cond_transformer_twfa.Net2NetTransformer
+  params:
+    vqvae_ckpt_path: pretrained/checkpoints/TwFA_ckpt_vg.ckpt
+    transformer_config:
+      target: TwFA.models.mingpt_twfa.GPT
+      params:
+        vocab_size: 8192
+        block_size: 406
+        n_layer: 24
+        n_head: 16
+        n_embd: 1024
+        resid_pdrop: 0.1
+        attn_pdrop: 0.1
+        embd_pdrop: 0.1
+        class_num: 179
+        num_obj: 30
+    first_stage_config:
+      target: TwFA.modules.taming.models.vqgan.VQModel
+      params:
+        embed_dim: 256
+        n_embed: 8192
+        ddconfig:
+          double_z: false
+          z_channels: 256
+          resolution: 256
+          in_channels: 3
+          out_ch: 3
+          ch: 128
+          ch_mult:
+          - 1
+          - 1
+          - 2
+          - 2
+          - 4
+          num_res_blocks: 2
+          attn_resolutions:
+          - 16
+          dropout: 0.0
+        lossconfig:
+          target: TwFA.modules.taming.modules.losses.DummyLoss
+data:
+  target: main.DataModuleFromConfig
+  params:
+    batch_size: 28
+    num_workers: 16
+    train:
+      target: TwFA.data.dataloader_vg.VgDataset
+      params:
+        size: 296
+        crop_size: 256
+        vocab: data/vg_other_annotations/vocab.json
+        image_dir: data/vg/images/
+        h5_path: data/vg_other_annotations/train.h5
+        max_objects: 30
+        left_right_flip: true
+        crop_type: random
+        mask_inst_only: true
+    validation:
+      target: TwFA.data.dataloader_vg.VgDataset
+      params:
+        size: 256
+        crop_size: 256
+        vocab: data/vg_other_annotations/vocab.json
+        image_dir: data/vg/images/
+        h5_path: data/vg_other_annotations/test.h5
+        max_objects: 30
+        left_right_flip: false
+        crop_type: none
+        mask_inst_only: true
