@@ -123,6 +123,7 @@ def top_k_logits(logits, k):
     out[out < v[..., [-1]]] = -float('Inf')
     return out
 
+# object-aware sampling
 @torch.no_grad()
 def sample(args, model, x, label, bbox, steps, flag=None, mask=None, temperature=1.0, sampled=True):
     for k in range(steps):

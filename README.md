@@ -18,7 +18,6 @@ The illustration of different attention mechanisms with connectivity matrix.
 ## Requirements
 A suitable [conda](https://conda.io/) environment named `twfa` can be created
 and activated with:
-
 ```
 conda env create -f environment.yaml
 conda activate twfa
