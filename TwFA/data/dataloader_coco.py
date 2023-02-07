@@ -362,7 +362,7 @@ class CocoDataset(Dataset):
 
         
         
-        # Building  connectivity matrix
+        # Building connectivity matrix
         tmp_index = label_mask.sum(-1)==0
         label_mask[tmp_index] = 1
         token_mask[tmp_index] = token_mask[tmp_index] + 1
