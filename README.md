@@ -33,7 +33,7 @@ obtained from the [COCO webpage](https://cocodataset.org/).
 
 ### VG
 Create a symlink `data/vg` containing the images from Visual Genome. Files can be
-obtained from the [VG webpage](https://visualgenome.org/). Download the [processed annotations](https://k00.fr/12hb08su) (password: 575284) and unzip it into the dir `data`.
+obtained from the [VG webpage](https://visualgenome.org/). Unzip the other annotations for VG in the dir `data`.
 
 ## Sampling
 
