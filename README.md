@@ -38,13 +38,13 @@ obtained from the [VG webpage](https://visualgenome.org/). Unzip the other annot
 ## Sampling
 
 ### COCO
-Download the [checkpoint](https://k00.fr/acoy6zhf) and place it into the dir `pretrained/checkpoints`. Then run the command:
+Download the [checkpoint](https://pan.baidu.com/s/1E7BSTe1Ky0fLO-IYYmjjGQ) (code: 5ipt) and place it into the dir `pretrained/checkpoints`. Then run the command:
 ```
 python scripts/sample_coco.py --base configs/coco.yaml --save_path SAVE_DIR
 ```
 
 ### VG
-Download the [checkpoint1](https://k00.fr/wf27a8kz) or [checkpoint2](https://k00.fr/4kaihme3) and place it into the dir `pretrained/checkpoints`. Then run the command:
+Download the [checkpoint1](https://pan.baidu.com/s/1PVDSJ6o70sz9v1-VuBGVTA) (code: 1gzu) or [checkpoint2](https://pan.baidu.com/s/1BCOjMHRsHc_HtVHwziH4AQ) (code: t1qv) and place it into the dir `pretrained/checkpoints`. Then run the command:
 ```
 python scripts/sample_vg.py --base configs/VG_CONFIG_FILE --save_path SAVE_DIR
 ```
